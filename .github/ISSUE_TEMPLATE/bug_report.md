@@ -1,4 +1,13 @@
+const { ethers } = require('ethers');
+const data = '0x095ea7b3...'; // your calldata
+const iface = new ethers.utils.Interface(['function approve(address,uint256)']);
+const decoded = iface.decodeFunctionData('approve', data);
+console.log(decoded[0]); // spender
+console.log(decoded[1].toString()); // amount in wei
+console.log(ethers.utils.formatUnits(decoded[1], 18)); // amount as human-readable with 18 decimals
+
 ---
+
 name: Bug report
 about: Create a report to help us improve
 title: ''
